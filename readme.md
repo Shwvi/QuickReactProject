@@ -1,3 +1,12 @@
+# Introduction
+
+This is a repo for developer who want to start her or his react project quickly.
+
+# 🌟 Feature
+
+- [x] Check prettier and eslint when git hook "pre-commit"
+- [x] Default tailwindcss purge
+
 # Install And Start Dev
 
 Install deps
