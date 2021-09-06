@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const friendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const config = require("./config.json");
 const isDev = process.env.KMENV === "DEV";
 
@@ -10,7 +11,6 @@ module.exports = {
   mode: isDev ? "development" : "production",
   entry: {
     app: "./src/index.tsx",
-    vendor: ["react", "react-dom"],
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -58,7 +58,24 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: "css-loader",
+          },
+          {
+            loader: "postcss-loader",
+          },
+        ],
+      },
     ],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -68,6 +85,9 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new friendlyErrorsWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "css/[name].[hash].css",
+    }),
   ],
   devServer: {
     static: {
