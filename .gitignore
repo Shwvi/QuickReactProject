@@ -1,4 +1,6 @@
 #node
 node_modules
+dist
 #os
+.dist
 .DS_Store
