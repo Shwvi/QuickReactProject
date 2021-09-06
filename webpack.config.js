@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const friendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+
 const config = require("./config.json");
 const isDev = process.env.KMENV === "DEV";
 
@@ -87,6 +89,17 @@ module.exports = {
     new friendlyErrorsWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "css/[name].[hash].css",
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "public",
+          to: "",
+          globOptions: {
+            ignore: ["**/index.html"],
+          },
+        },
+      ],
     }),
   ],
   devServer: {
