@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "cross-env KMENV=DEV webpack serve",
     "build": "cross-env KMENV=PRD webpack",
-    "test": "prettier --check ."
+    "test": "prettier --write ."
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
