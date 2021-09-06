@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "cross-env KMENV=DEV webpack serve",
     "build": "cross-env KMENV=PRD webpack",
-    "prettier:check": "prettier --check ."
+    "test": "prettier --check ."
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -35,12 +35,6 @@
     "@types/react-dom": "^17.0.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  },
-  "husky": {
-    "pre-commit": "yarn prettier:check"
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
   },
   "config": {
     "commitizen": {
