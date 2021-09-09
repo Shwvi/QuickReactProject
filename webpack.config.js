@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 const config = require("./config.json");
+const { DefinePlugin } = require("webpack");
 const isDev = process.env.KMENV === "DEV";
 
 module.exports = {
@@ -100,6 +101,9 @@ module.exports = {
           },
         },
       ],
+    }),
+    new DefinePlugin({
+      __DEV__: isDev,
     }),
   ],
   devServer: {

@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function EXPage() {
+  console.log(__DEV__);
   return (
     //   tailwindcss dark mode example
     <div style={{ margin: 10 }}>
